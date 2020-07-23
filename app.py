@@ -10,6 +10,8 @@ def nao_entre_em_panico():
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
     if challenge != '*' and verify_token == 'chupacabra':
         return 'Entrei'
+    else:
+        return 'Não Entrei'
        
     data = request.data.decode('utf-8')
     print(data)
