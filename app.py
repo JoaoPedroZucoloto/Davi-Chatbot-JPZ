@@ -1,25 +1,17 @@
-import os
-from flask import Flask, jsonify, request
-
-
+import os, sys
+from flask import Flask,request
 app = Flask(__name__)
 
-@app.route('/webhook', methods=['GET', 'POST'])
-def nao_entre_em_panico():  
-    challenge       = request.args.get('hub.challenge',    default = '*', type = str)
-    verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
-    print(type(challenge))
-    print(type(verify_token))
-    if challenge != '*' and verify_token == 'chupacabra':
-        return challenge
-    else:
-        return challenge
-       
-    data = request.data.decode('utf-8')
-    print(data)
-        
-    return challenge, verify_token
+VERIFY_TOKEN = "chupacabra"
 
-if __name__ == "__main__":
-    app.debug = True
-    app.run()
+@app.route('/', methods=['GET'])
+def index():
+    return "This is a Facebook Messenger test bot server."
+
+
+@app.route('/webhook', methods=['GET'])
+def verify():
+    # webhook verification
+    if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.challenge'):
+        if request.args.get('hub.verify_token') == VERIFY_TOKEN:
+            return 'Verification token missmatch', 403
