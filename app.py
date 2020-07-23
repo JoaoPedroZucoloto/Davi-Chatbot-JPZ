@@ -5,3 +5,6 @@ import sys, os, time
 import streamlit as st
 
 st.title('Oi')
+
+challenge       = request.args.get('hub.challenge',    default = '*', type = str)
+verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
