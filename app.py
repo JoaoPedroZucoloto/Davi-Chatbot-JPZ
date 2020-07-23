@@ -6,13 +6,15 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def nao_entre_em_panico():
-    ar = 'Lente Azul'
     challenge       = request.args.get('hub.challenge',    default = '*', type = str)
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
-    if challenge != '*' and verify_token == 'chupacabra':
+    if challenge != '*' and verify_token == 'aqui vai o token que tu configura no Workplace':
         return challenge
-    
-    return ar, challenge
+       
+    data = request.data.decode('utf-8')
+    print(data)
+        
+    return 'Lente Azul'
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
