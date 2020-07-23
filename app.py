@@ -6,6 +6,12 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['GET', 'POST'])
 def nao_entre_em_panico():
+    def api_response():
+        from flask import jsonify
+        
+        if request.method == 'POST':
+            return jsonify(**request.json)
+    
     challenge       = request.args.get('hub.challenge',    default = '*', type = str)
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
     print(type(challenge))
@@ -21,5 +27,5 @@ def nao_entre_em_panico():
     return challenge, verify_token
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.debug = True
+    app.run()
