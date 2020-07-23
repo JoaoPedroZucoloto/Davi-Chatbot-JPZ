@@ -6,9 +6,10 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['GET', 'POST'])
 def nao_entre_em_panico():
-    print(request.json)
     challenge       = request.args.get('hub.challenge',    default = '*', type = str)
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
+    print(type(challenge))
+    print(type(verify_token))
     if challenge != '*' and verify_token == 'chupacabra':
         return challenge, verify_token
     else:
