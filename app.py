@@ -9,7 +9,7 @@ def nao_entre_em_panico():
     challenge       = request.args.get('hub.challenge',    default = '*', type = str)
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
     if challenge != '*' and verify_token == 'chupacabra':
-        return challenge
+        return 'Entrei'
        
     data = request.data.decode('utf-8')
     print(data)
