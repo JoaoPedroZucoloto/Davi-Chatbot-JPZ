@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 VERIFY_TOKEN = "chupacabra"
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     return "This is a Facebook Messenger test bot server."
 
