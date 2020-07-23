@@ -8,3 +8,5 @@ VERIFY_TOKEN = "chupacabra"
 def index():
     return "This is a Facebook Messenger test bot server."
 
+if __name__ == "__main__": 
+    app.run() 
