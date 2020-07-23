@@ -9,10 +9,10 @@ def nao_entre_em_panico():
     ar = 'Lente Azul'
     challenge       = request.args.get('hub.challenge',    default = '*', type = str)
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
-    if challenge != '*' and verify_token == 'aqui vai o token que tu configura no Workplace':
+    if challenge != '*' and verify_token == 'chupacabra':
         return challenge
     
-    return ar
+    return ar, challenge
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
