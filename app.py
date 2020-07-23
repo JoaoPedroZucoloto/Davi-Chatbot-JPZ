@@ -1,20 +1,15 @@
-from flask import Flask
-from flask import request
-from flask import render_template
-import sys, os, time
-import streamlit as st
+import os
+from flask import Flask, jsonify, request
 
-st.title('Roi')
 
-application = Flask(__name__)
+app = Flask(__name__)
 
-@application.route('https://davi-chatbot-jpz.herokuapp.com/', methods=['GET', 'POST'])
-def webhook():    
-    challenge       = request.args.get('hub.challenge',    default = '*', type = str)
-    verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
-    if challenge != '*' and verify_token == 'token-da-loucura':
-        return challenge
-       
-    data = request.data.decode('utf-8')
-        
-    return 'Oi :)'
+@app.route('/')
+def nao_entre_em_panico():
+    if request.headers.get('Authorization') == '42':
+        return jsonify({"42": "a resposta para a vida, o universo e tudo mais"})
+    return jsonify({"message": "Não entre em pânico!"})
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
