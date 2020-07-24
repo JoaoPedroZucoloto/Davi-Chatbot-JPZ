@@ -19,11 +19,12 @@ def nao_entre_em_panico():
 @app.route("/webhook", methods=['GET','POST'])
 def webhook_handle():
     ar = 'Lente Azul'
-    challenge       = request.args.get('hub.challenge',    default = '*', type = str)
+    challenge       = request.args.get()
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
     if challenge != '*' and verify_token == 'chupacabra':
         return challenge
 
+    output = request.get_json()
     return 'ok' + challenge
 
 if __name__ == "__main__":
