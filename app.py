@@ -1,11 +1,6 @@
 import os
 from flask import Flask, jsonify, request
 
-def api_response():
-    from flask import jsonify
-    if request.method == 'POST':
-        return jsonify(**request.json)
-
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -17,7 +12,8 @@ def nao_entre_em_panico():
         return challenge
     
     data = request.data.decode('utf-8')
-    return data
+    output = request.get_json()
+    return output
 
 @app.route("/webhook", methods=['POST'])
 def webhook_handle():
