@@ -10,7 +10,8 @@ def nao_entre_em_panico():
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
     if challenge != '*' and verify_token == 'aqui vai o token que tu configura no Workplace':
         return challenge
-    
+
+    print(ar)
     data = request.get_json()
     return jsonify(data)
 
