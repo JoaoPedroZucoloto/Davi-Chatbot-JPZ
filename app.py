@@ -1,5 +1,5 @@
 import os, sys
-from flask import Flask, reqest
+from flask import Flask, request
 
 app = Flask(__name__)
 
