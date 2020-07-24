@@ -11,8 +11,8 @@ def nao_entre_em_panico():
     if challenge != '*' and verify_token == 'aqui vai o token que tu configura no Workplace':
         return challenge
     
-    data = request.data.decode('utf-8')
-    return request.get_json()
+    data = request.get_json()
+    return jsonify(name)
 
 @app.route("/webhook", methods=['POST'])
 def webhook_handle():
