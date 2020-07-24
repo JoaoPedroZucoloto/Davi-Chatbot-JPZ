@@ -1,12 +1,8 @@
-import os, sys
-from flask import Flask,request
-app = Flask(__name__)
+from flask import Flask, request, Response
 
-VERIFY_TOKEN = "chupacabra"
+app = Flask(_name_)
 
-@app.route('/')
-def index():
-    return "This is a Facebook Messenger test bot server."
-
-if __name__ == "__main__": 
-    app.run() 
+@app.route('/webhook', methods=['POST'])
+def respond():
+    print(request.json);
+    return Response(status=200)
