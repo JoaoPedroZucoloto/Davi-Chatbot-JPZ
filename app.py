@@ -12,7 +12,7 @@ def nao_entre_em_panico():
         return challenge
     
     data = request.get_json()
-    return jsonify(name)
+    return jsonify(data)
 
 @app.route("/webhook", methods=['POST'])
 def webhook_handle():
