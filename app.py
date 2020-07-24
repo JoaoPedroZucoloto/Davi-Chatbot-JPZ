@@ -13,7 +13,7 @@ def nao_entre_em_panico():
 
     print(ar)
     data = request.get_json()
-    return jsonify(data)
+    return request.args.get("hub.mode")
 
 @app.route("/webhook", methods=['GET','POST'])
 def webhook_handle():
