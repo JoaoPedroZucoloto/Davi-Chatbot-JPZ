@@ -8,7 +8,7 @@ def nao_entre_em_panico():
     ar = 'Lente Azul'
     challenge       = request.args.get('hub.challenge',    default = '*', type = str)
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
-    if challenge != '*' and verify_token == 'aqui vai o token que tu configura no Workplace':
+    if challenge != '*' and verify_token == 'chupacabra':
         return challenge
 
     print(ar)
