@@ -15,7 +15,7 @@ def nao_entre_em_panico():
     data = request.get_json()
     return jsonify(data)
 
-@app.route("/webhook", methods=['POST'])
+@app.route("/webhook", methods=['GET','POST'])
 def webhook_handle():
     output = request.get_json()
     print(output)
