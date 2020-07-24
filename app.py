@@ -6,7 +6,7 @@ app = Flask(__name__)
 def webhook():
     print(request.data)
     data = request.get_json()
-    return request.data
+    return 'ok'
     
 
 if __name__ == "__main__":
