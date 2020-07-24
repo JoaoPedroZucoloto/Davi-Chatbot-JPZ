@@ -12,8 +12,7 @@ def nao_entre_em_panico():
         return challenge
     
     data = request.data.decode('utf-8')
-    #output = request.get_json()
-    return request
+    return str(verify_token)
 
 @app.route("/webhook", methods=['POST'])
 def webhook_handle():
