@@ -4,18 +4,11 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
-def nao_entre_em_panico():
-    challenge       = request.args.get('hub.challenge',    default = '*', type = str)
-    verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
-    if challenge != '*' and verify_token == 'chupacabra':
-        return 'Entrei'
+def verify_webhook(req):
+    if req.args.get("hub.verify_token") == VERIFY_TOKEN:
+        return req.args.get("hub.challenge")
     else:
-        return 'Não Entrei', verify_token
-       
-    data = request.data.decode('utf-8')
-    print(data)
-        
-    return data
+        return "incorrect"
 
 if __name__ == "__main__":
     app.run(debug=True)
