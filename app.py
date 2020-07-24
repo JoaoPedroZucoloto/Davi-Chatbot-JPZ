@@ -26,9 +26,9 @@ def nao_entre_em_panico():
     verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
     if challenge != '*' and verify_token == 'aqui vai o token que tu configura no Workplace':
         return challenge
-    
+    response = requests.post('https://davi-chatbot-jpz.herokuapp.com/', data={'key1':'value1'})
     data = request.data.decode('utf-8')
-    return pretty_print_POST(data)
+    return response.request.body
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
