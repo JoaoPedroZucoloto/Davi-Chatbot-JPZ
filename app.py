@@ -17,7 +17,7 @@ def nao_entre_em_panico():
         return challenge
     
     data = request.data.decode('utf-8')
-    return data
+    return api_response()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
