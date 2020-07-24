@@ -1,8 +1,24 @@
-from flask import Flask, request, Response
+import os
+from flask import Flask, jsonify, request
 
-app = Flask(_name_)
+print('roi')
 
-@app.route('/webhook', methods=['POST'])
-def respond():
-    print(request.json)
-    return Response(status=200)
+app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def nao_entre_em_panico():
+    challenge       = request.args.get('hub.challenge',    default = '*', type = str)
+    verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
+    if challenge != '*' and verify_token == 'chupacabra':
+        return 'Entrei'
+    else:
+        return 'Não Entrei'
+       
+    data = request.data.decode('utf-8')
+    print(data)
+        
+    return data
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
