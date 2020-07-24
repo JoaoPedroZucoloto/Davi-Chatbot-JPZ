@@ -19,7 +19,7 @@ def nao_entre_em_panico():
 def webhook_handle():
     output = request.get_json()
     print(output)
-    return 'ok'
+    return 'ok' + str(output)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
