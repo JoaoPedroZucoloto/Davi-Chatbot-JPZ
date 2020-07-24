@@ -1,14 +1,12 @@
-import os
-from flask import Flask, jsonify, request
+from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route('/webhook', methods=['GET', 'POST'])
-def verify_webhook(req):
-    if req.args.get("hub.verify_token") == 'chupacabra':
-        return req.args.get("hub.challenge")
-    else:
-        return "incorrect"
+@app.route('/', methods=['POST'])
+def webhook():
+    print(request.data)
+    data = request.get_json()
+    return request.data
     
 
 if __name__ == "__main__":
