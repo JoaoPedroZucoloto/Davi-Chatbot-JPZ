@@ -12,7 +12,7 @@ def nao_entre_em_panico():
     if challenge != '*' and verify_token == 'aqui vai o token que tu configura no Workplace':
         return challenge
     
-    return request.args.get('hub.challenge')
+    data = request.data.decode('utf-8')
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
