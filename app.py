@@ -11,9 +11,10 @@ def nao_entre_em_panico():
     if challenge != '*' and verify_token == 'chupacabra':
         return challenge
 
-    print(ar)
-    data = request.get_json()
-    return request.args.get("hub.mode")
+    output = request.get_json()
+    for event in output['entry']:
+        messaging = event['messaging']
+    return messaging
 
 @app.route("/webhook", methods=['GET','POST'])
 def webhook_handle():
