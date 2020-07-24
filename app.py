@@ -1,8 +1,6 @@
 import os
 from flask import Flask, jsonify, request
 
-print('roi')
-
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -12,7 +10,7 @@ def nao_entre_em_panico():
     if challenge != '*' and verify_token == 'chupacabra':
         return 'Entrei'
     else:
-        return 'Não Entrei'
+        return 'Não Entrei', verify_token
        
     data = request.data.decode('utf-8')
     print(data)
