@@ -5,16 +5,9 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def nao_entre_em_panico():
-    #ar = 'Lente Azul'
-    #challenge       = request.args.get('hub.challenge',    default = '*', type = str)
-    #verify_token    = request.args.get('hub.verify_token', default = '',  type = str)
-    #if challenge != '*' and verify_token == 'chupacabra':
-    #    return challenge
-
-    #output = request.get_json()
-    #for event in output['entry']:
-    #    messaging = event['messaging']
-    #return messaging
+    with open('caminho-completo/teste.txt', 'a') as file:
+            file.write(request.data.decode('utf-8'))
+            file.read()
 
 @app.route("/webhook", methods=['GET','POST'])
 def webhook_handle():
